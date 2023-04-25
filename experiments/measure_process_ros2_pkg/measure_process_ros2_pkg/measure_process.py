@@ -65,15 +65,16 @@ class MeasureProcess(Node):
         self.pub_cpu_measure_.publish(msg)
         pi = psutil.process_iter()
 
+        # print(psutil.cpu_percent(percpu=True))
+
         for proc in pi:
             if not proc.name() in self.proc_list:
                 continue
 
             value =  proc.cpu_percent()
-            if not value == 0.0:
-                for process in self.process_list:
-                    if proc.name() == process.id:
-                        process.value += value
+            for process in self.process_list:
+                if proc.name() == process.id:
+                    process.value += value
         
         msg = Float64()
         for process in self.process_list: 
