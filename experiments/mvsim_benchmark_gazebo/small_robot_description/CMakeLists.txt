@@ -62,7 +62,7 @@ install(
 
 install(
   PROGRAMS
-  launch/spawn_small_robot.py
+  src/replace.py # JLBC: Was "spawn_small_robot.py"
   DESTINATION lib/${PROJECT_NAME}
 )
 
