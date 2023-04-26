@@ -56,14 +56,16 @@ install(
     meshes
     urdf
     launch
+    "${CMAKE_CURRENT_BINARY_DIR}/urdf"
   DESTINATION
     share/${PROJECT_NAME}/
 )
 
 install(
   PROGRAMS
-  src/replace.py # JLBC: Was "spawn_small_robot.py"
+  src/replace.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
 ament_package()
+
