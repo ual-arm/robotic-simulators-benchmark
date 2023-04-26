@@ -275,3 +275,4 @@ TSWLatexianTemp*
 # Makeindex log files
 *.lpz
 .vscode
+__pycache__
