@@ -4,6 +4,8 @@
 
 - Install: 
   - gazebo
+  - Webots
+  - Webots ROS2 pkg `sudo apt-get install ros-$ROS_DISTRO-webots-ros2`
 
 Python packages:
 
