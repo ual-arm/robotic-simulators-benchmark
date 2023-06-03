@@ -14,7 +14,7 @@ def generate_launch_description():
 
     world_path = os.path.join(general_package_dir, 'worlds', 'Empty.world')
     
-    show_gui = False # True
+    show_gui = True
     
     if (show_gui):
         gzCmd = 'gazebo'
