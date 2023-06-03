@@ -14,7 +14,14 @@ def generate_launch_description():
 
     world_path = os.path.join(general_package_dir, 'worlds', 'Empty.world')
     
-    gazebo = ExecuteProcess(cmd=['gazebo', '--verbose', world_path, '-s', 'libgazebo_ros_init.so', '-s', 'libgazebo_ros_factory.so', '--ros-args',
+    show_gui = False # True
+    
+    if (show_gui):
+        gzCmd = 'gazebo'
+    else:
+        gzCmd = 'gzserver'
+    
+    gazebo = ExecuteProcess(cmd=[gzCmd, '--verbose', world_path, '-s', 'libgazebo_ros_init.so', '-s', 'libgazebo_ros_factory.so', '--ros-args',
         ], output='screen'
     )
     lim = 10.0
