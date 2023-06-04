@@ -1,4 +1,7 @@
-# paper-emcr2023
+# Robotic simulators benchmark
+
+The goal of this repository is to provide a common set of scenarios/robots/sensors 
+such that they are all simulated in different mobile robot simulators for CPU-usage benchmarking.
 
 ## Requisites
 
