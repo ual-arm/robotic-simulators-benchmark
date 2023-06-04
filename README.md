@@ -21,7 +21,7 @@ colcon build --symlink-install && source install/setup.bash
 ## Use
 Gazebo
 ```
-ros2 launch small_robot_gazebo multi_small_robot.launch.py
+BENCHMARK_GUI=False BENCHMARK_NUM_ROBOTS=10  ros2 launch small_robot_gazebo multi_small_robot.launch.py
 ```
 
 - Physics: T=1 ms

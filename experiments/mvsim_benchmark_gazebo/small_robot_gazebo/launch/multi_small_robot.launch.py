@@ -14,7 +14,8 @@ def generate_launch_description():
 
     world_path = os.path.join(general_package_dir, 'worlds', 'Empty.world')
     
-    show_gui = True
+    show_gui = os.getenv('BENCHMARK_GUI', False)
+    num_robots = int(os.getenv('BENCHMARK_NUM_ROBOTS', 1))
     
     if (show_gui):
         gzCmd = 'gazebo'
@@ -27,14 +28,12 @@ def generate_launch_description():
     lim = 10.0
     robot_node_list = []
     
-    for i in range(15):
-        if i<10:
-            robot_name = 'small_robot0'+str(i)+'.urdf'
-        else:
-            robot_name = 'small_robot'+str(i)+'.urdf'
+    for i in range(num_robots):
+        robot_name = 'small_robot{:02d}.urdf'.format(i)
         urdf_path = os.path.join(model_dir, 'urdf', robot_name)
-        x_pos = round(random.uniform(-lim, lim), 2)
-        y_pos = round(random.uniform(-lim, lim), 2)
+        # fixed pos: avoid collisions
+        x_pos = -lim + (i % 8)*2.5  #round(random.uniform(-lim, lim), 2)
+        y_pos = -lim + (i/8)*2.5 #round(random.uniform(-lim, lim), 2)
         robot_node_list.append(Node(package='small_robot_gazebo', executable='inject_entity.py', output='screen',
                                             arguments=[urdf_path, str(x_pos), str(y_pos), '0.05', '0']),
         )
