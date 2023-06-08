@@ -53,6 +53,8 @@ class RecordCpuUsage(Node):
             self.out_fil.close()
             time.sleep(1.0)
             os.system('pkill -SIGINT ros2')
+            os.system('pkill -KILL gzclient')
+            os.system('pkill -KILL gzserver')
             #launch.actions.Shutdown()
 
     def iterate(self):
