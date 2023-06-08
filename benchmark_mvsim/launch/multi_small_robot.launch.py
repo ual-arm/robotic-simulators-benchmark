@@ -10,7 +10,7 @@ def str2bool(v):
   return v.lower() in ("yes", "true", "t", "1")
 
 def generate_launch_description():
-    general_package_dir = get_package_share_directory('mvsim_benchmark_mvsim')
+    general_package_dir = get_package_share_directory('benchmark_mvsim')
     mvsimDir = get_package_share_directory("mvsim")
 
     world_path = os.path.join(general_package_dir, 'worlds', 'simple-room.world.xml')

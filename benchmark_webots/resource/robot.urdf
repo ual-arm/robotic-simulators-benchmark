@@ -40,6 +40,6 @@
             <gyroName>gyro</gyroName>
             <accelerometerName>accelerometer</accelerometerName>
         </plugin>
-        <plugin type="mvsim_benchmark_webots.robot_driver.RobotDriver" />
+        <plugin type="benchmark_webots.robot_driver.RobotDriver" />
     </webots>
 </robot>

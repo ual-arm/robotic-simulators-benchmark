@@ -16,5 +16,5 @@ for WITH_GUI in False True; do
     done
 done
 
-mkdir -p ./benchmark1_results
-mv -v /tmp/cpu*.txt ./benchmark1_results
+mkdir -p ./results/benchmark_n_robots
+mv -v /tmp/cpu*.txt ./results/benchmark_n_robots

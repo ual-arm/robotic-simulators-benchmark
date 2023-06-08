@@ -42,7 +42,7 @@ BENCHMARK_GUI=False BENCHMARK_NUM_ROBOTS=10  ros2 launch small_robot_gazebo mult
 ### Webots
 
 ```
-ros2 launch mvsim_benchmark_webots multi_robot.launch.py
+ros2 launch benchmark_webots multi_robot.launch.py
 ```
 
 ### MVSim

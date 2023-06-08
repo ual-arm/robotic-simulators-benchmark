@@ -12,9 +12,9 @@ for WITH_GUI in False True; do
     echo " LAUNCHING BENCHMARK FOR $N ROBOTS  (GUI: $WITH_GUI)    "
     echo "========================================================"
 
-    BENCHMARK_GUI=$WITH_GUI BENCHMARK_NUM_ROBOTS=$N ros2 launch mvsim_benchmark_mvsim multi_small_robot.launch.py
+    BENCHMARK_GUI=$WITH_GUI BENCHMARK_NUM_ROBOTS=$N ros2 launch benchmark_mvsim multi_small_robot.launch.py
     done
 done
 
-mkdir -p ./benchmark1_results
-mv -v /tmp/cpu*.txt ./benchmark1_results
+mkdir -p ./results/benchmark_n_robots
+mv -v /tmp/cpu*.txt ./results/benchmark_n_robots

@@ -10,7 +10,7 @@ from webots_ros2_driver.utils import controller_url_prefix
 
 
 def generate_launch_description():
-    package_dir = get_package_share_directory('mvsim_benchmark_webots')
+    package_dir = get_package_share_directory('benchmark_webots')
     robot_description = pathlib.Path(os.path.join(package_dir, 'resource', 'robot.urdf')).read_text()
     use_sim_time = LaunchConfiguration('use_sim_time', default=True)
 

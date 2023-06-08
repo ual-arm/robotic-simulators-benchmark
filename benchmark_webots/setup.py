@@ -2,7 +2,7 @@ import os
 from glob import glob
 from setuptools import setup
 
-package_name = 'mvsim_benchmark_webots'
+package_name = 'benchmark_webots'
 
 data_files=[
         ('share/ament_index/resource_index/packages',
@@ -41,7 +41,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'robot_driver = mvsim_benchmark_webots.robot_driver:main'
+            'robot_driver = benchmark_webots.robot_driver:main'
         ],
     },
 )

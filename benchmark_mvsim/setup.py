@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'mvsim_benchmark_mvsim'
+package_name = 'benchmark_mvsim'
 
 setup(
     name=package_name,
