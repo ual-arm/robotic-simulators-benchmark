@@ -6,7 +6,7 @@
 rm /tmp/cpu*
 
 for WITH_GUI in False True; do
-    for N in {1..25}; do
+    for N in {1..25..4}; do
     clear
     echo "========================================================"
     echo " LAUNCHING BENCHMARK FOR $N ROBOTS  (GUI: $WITH_GUI)    "
