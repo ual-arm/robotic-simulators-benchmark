@@ -21,7 +21,7 @@ setup(
     entry_points={
         'console_scripts': [
             'measure_process = measure_process_ros2_pkg.measure_process:main',
-            'record_cpu_usage = record_cpu_usage_pkg.record_cpu_usage:main'
+            'record_cpu_usage = measure_process_ros2_pkg.record_cpu_usage:main'
         ],
     },
 )

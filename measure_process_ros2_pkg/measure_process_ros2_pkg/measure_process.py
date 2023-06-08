@@ -49,22 +49,22 @@ class MeasureProcess(Node):
         self.get_logger().info('Status: "%s"' % msg.data)
 
     def do_measure(self):
-        data_list = list()
-        cpu_count = psutil.cpu_count()
-        data_list.append(float(cpu_count))
-        data_list.append(psutil.cpu_percent(interval=None))
-        mem = psutil.virtual_memory()
-        data_list.append(mem.percent)
-        load_tuple = psutil.getloadavg()
-        for load in load_tuple:
-            percent = (load / cpu_count) * 100
-            data_list.append(percent)
+        #data_list = list()
+        #cpu_count = psutil.cpu_count()
+        #data_list.append(float(cpu_count))
+        #data_list.append(psutil.cpu_percent(interval=None))
+        #mem = psutil.virtual_memory()
+        #data_list.append(mem.percent)
+        #load_tuple = psutil.getloadavg()
+        #for load in load_tuple:
+        #    percent = (load / cpu_count) * 100
+        #    data_list.append(percent)
 
-        msg = Float64MultiArray()
-        msg.data = data_list
-        self.pub_cpu_measure_.publish(msg)
+        #msg = Float64MultiArray()
+        #msg.data = data_list
+        #self.pub_cpu_measure_.publish(msg)
+        
         pi = psutil.process_iter()
-
         # print(psutil.cpu_percent(percpu=True))
 
         for proc in pi:
@@ -76,12 +76,14 @@ class MeasureProcess(Node):
                 if proc.name() == process.id:
                     process.value += value
         
-        msg = Float64()
-        for process in self.process_list: 
-            msg.data = process.value
-            process.pub_process_measure_.publish(msg)
-            self.get_logger().debug('Process %s = %f' % (process.id, msg.data))
+        msg = Float64MultiArray()
+        for process in self.process_list:
+            msg.data.append(process.value)
+            self.get_logger().debug('Process %s = %f' % (process.id, process.value))
             process.value = 0.0
+
+        self.get_logger().debug('Msg: %s' % str(msg))
+        self.pub_cpu_measure_.publish(msg)
 
 
     def iterate(self):
