@@ -1,0 +1,70 @@
+<mvsim_world version="1.0">
+	<!-- General simulation options -->
+	<simul_timestep>1e-3</simul_timestep> <!-- Simulation fixed-time interval for numerical integration [seconds] or 0 to autodetermine -->
+
+	<!-- GUI options -->
+	<gui>
+		<ortho>false</ortho>
+		<show_forces>false</show_forces>  <force_scale>0.01</force_scale>
+		<cam_distance>35</cam_distance>
+		<fov_deg>60</fov_deg>
+		<refresh_fps>10</refresh_fps>
+		<!-- <follow_vehicle>r1</follow_vehicle> -->
+	</gui>
+
+	<variable name="ROBOTS_X_MIN" value="-10.0" />
+	<variable name="ROBOTS_Y_MIN" value="-10.0" />	
+
+	<variable name="NUM_BLOCKS" value="$env{BENCHMARK_NUM_ROBOTS}" />
+
+	<!-- ========================
+		   Scenario definition
+	     ======================== -->
+	
+    <!-- =============================
+		   Vehicle classes definition
+	     ============================= -->
+	<include file="$(ros2 pkg prefix mvsim)/share/mvsim/mvsim_tutorial/definitions/small_robot.vehicle.xml" />
+
+	<!-- ========================
+		   Vehicle(s) definition
+	     ======================== -->
+	<for var="i" from="0" to="$f{NUM_BLOCKS}">
+		<!-- <block class="square_obstacle"> <init_pose>$f{unifrnd(ROBOTS_X_MIN,ROBOTS_X_MAX)} $f{unifrnd(ROBOTS_Y_MIN,ROBOTS_Y_MAX)} $f{unifrnd(-180,180)}</init_pose> </block> -->
+
+        <vehicle class="small_robot">
+            <init_pose>$f{ROBOTS_X_MIN + (i % 8)*2.5} $f{ROBOTS_Y_MIN + (i/8)*2.5} 0</init_pose>  <!-- In global coords: x,y, yaw(deg) -->
+            <init_vel>0 0 0</init_vel>  <!-- In local coords: vx,vy, omega(deg/s) -->
+
+            <!-- Sensors -->
+            <include file="./lidar2d.sensor.xml"
+              sensor_x="0.15" sensor_z="0.65" sensor_yaw="0" sensor_name="laser1"
+              sensor_nrays="200" raytrace_3d="true"
+              fov_degrees="360"
+              sensor_period_sec="0.05"
+              max_range="5.0"
+            />
+        </vehicle>
+	</for>
+
+	<!-- ======================================
+	      Obstacle blocks classes definition
+	     ====================================== -->
+	<block:class name="wall_segment">
+		<static>true</static> <!-- Does not move -->
+		<color>#0080ff</color>
+		<zmax>1.5</zmax>
+		<shape>
+			<pt>-12.5 -0.2</pt>
+			<pt>-12.5 +0.2</pt>
+			<pt>+12.5 +0.2</pt>
+			<pt>+12.5 -0.2</pt>
+		</shape>
+	</block:class>
+
+	<block class="wall_segment"> <init_pose>-12.5 0 90</init_pose> </block>
+	<block class="wall_segment"> <init_pose>+12.5 0 90</init_pose> </block>
+	<block class="wall_segment"> <init_pose>0 -12.5 0</init_pose> </block>
+	<block class="wall_segment"> <init_pose>0 +12.5 0</init_pose> </block>
+
+</mvsim_world>

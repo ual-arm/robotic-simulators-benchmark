@@ -1,6 +1,4 @@
 import os
-import random
-import launch_ros.actions
 import launch
 from launch_ros.actions import Node
 from launch import LaunchDescription
@@ -19,7 +17,7 @@ def generate_launch_description():
 
     world_path = os.path.join(general_package_dir, 'worlds', 'Empty.world')
     
-    show_gui = str2bool(os.getenv('BENCHMARK_GUI', False))
+    show_gui = str2bool(os.getenv('BENCHMARK_GUI', 'False'))
     num_robots = int(os.getenv('BENCHMARK_NUM_ROBOTS', 1))
     
     if (show_gui):
