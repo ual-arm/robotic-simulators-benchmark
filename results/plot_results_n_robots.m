@@ -1,6 +1,6 @@
 function []=plot_results_n_robots()
 
-N = [1 5 9 13 17 21 25];
+N = [1:2:23];
 
 data = cell(length(N), 4);  % {1,2,3,4}: gazebo, mvsim,gazebo w GUI, mvsim w GUI
 
@@ -10,26 +10,26 @@ for i = 1:length(N)
     data{i, 1} = load(sprintf('benchmark_n_robots/cpu_gzserver_gui_%s_%02i.txt',hasGui,n)) + ...
                  load(sprintf('benchmark_n_robots/cpu_gzclient_gui_%s_%02i.txt',hasGui,n));
              
-    data{i, 2} = load(sprintf('benchmark_n_robots/cpu_mvsim_gui_%s_%02i.txt',hasGui,n));
+    data{i, 2} = zeros(length(data{i,1}),1); % load(sprintf('benchmark_n_robots/cpu_mvsim_gui_%s_%02i.txt',hasGui,n));
 
     hasGui='True';
     data{i, 3} = load(sprintf('benchmark_n_robots/cpu_gzserver_gui_%s_%02i.txt',hasGui,n)) + ...
                  load(sprintf('benchmark_n_robots/cpu_gzclient_gui_%s_%02i.txt',hasGui,n));
              
-    data{i, 4} = load(sprintf('benchmark_n_robots/cpu_mvsim_gui_%s_%02i.txt',hasGui,n));
+    data{i, 4} = zeros(length(data{i,1}),1); %load(sprintf('benchmark_n_robots/cpu_mvsim_gui_%s_%02i.txt',hasGui,n));
 end
 
-numSamples = length(data{i,1});
+numSamples = length(data{1,1});
 
 % Calculate statistics for each set
-means = cellfun(@mean, data);
-stds = cellfun(@std, data);
+%means = cellfun(@mean, data);
+%stds = cellfun(@std, data);
 
 % Plotting the figure
 afigure;
 hold on;
 
-sep=0.45; % separation between simulators points
+sep=0.35; % separation between simulators points
 NUM_STDS = 1;
 ptSize = 6.0;
 
@@ -38,8 +38,8 @@ for i = 1:length(N)
     
     % 1 
     % ----------------------------------------------------------------
-    upperBound = means(i, 1) + NUM_STDS * stds(i, 1);
-    lowerBound = means(i, 1) - NUM_STDS * stds(i, 1);
+    upperBound = prctile(data{i, 1},95);
+    lowerBound = prctile(data{i, 1},5);
     
     % Plot the box for the first set
     x0=n-2*sep;
@@ -48,8 +48,8 @@ for i = 1:length(N)
     
     % 3
     % ----------------------------------------------------------------
-    upperBound = means(i, 3) + NUM_STDS * stds(i, 3);
-    lowerBound = means(i, 3) - NUM_STDS * stds(i, 3);
+    upperBound = prctile(data{i, 3},95);
+    lowerBound = prctile(data{i, 3},5);
     
     x0=n;
     plot_segment(x0, lowerBound,upperBound, 'b','-')
@@ -57,8 +57,8 @@ for i = 1:length(N)
 
     % 2
     % ----------------------------------------------------------------
-    upperBound = means(i, 2) + NUM_STDS * stds(i, 2);
-    lowerBound = means(i, 2) - NUM_STDS * stds(i, 2);
+    upperBound = prctile(data{i, 2}, 95);
+    lowerBound = prctile(data{i, 2}, 5);
     
     x0=n-sep;
     plot_segment(x0, lowerBound,upperBound, 'r',':')
@@ -67,8 +67,8 @@ for i = 1:length(N)
     
     % 4
     % ----------------------------------------------------------------
-    upperBound = means(i, 4) + NUM_STDS * stds(i, 4);
-    lowerBound = means(i, 4) - NUM_STDS * stds(i, 4);
+    upperBound = prctile(data{i, 4}, 95);
+    lowerBound = prctile(data{i, 4}, 5);
     
     x0=n+sep;
     plot_segment(x0, lowerBound,upperBound, 'r','-')
@@ -82,7 +82,7 @@ end
 xlabel('Number of robots');
 ylabel('CPU core usage [%]');
 xlim([N(1)-4*sep N(end)+4*sep]);
-ylim([0 200]);
+ylim([0 220]);
 legend({...
     'Gazebo (headless)','','','',...
     'Gazebo incl. GUI','','','',...
@@ -102,7 +102,7 @@ end
 
 function []=plot_segment(x0,lowerBound,upperBound, col, lin)
 boxLnWidth=1.7;
-w=0.17; % box width
+w=0.12; % box width
 
 line([x0-w, x0+w], [upperBound, upperBound], 'Color', col, 'LineStyle', lin, 'LineWidth', boxLnWidth);
 line([x0, x0], [upperBound, lowerBound], 'Color', col, 'LineStyle', lin, 'LineWidth', boxLnWidth);
