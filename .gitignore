@@ -277,3 +277,4 @@ TSWLatexianTemp*
 .vscode
 __pycache__
 
+*.asv
