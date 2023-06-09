@@ -1,6 +1,6 @@
 function []=plot_results_n_robots()
 
-N = [1:2:23];
+N = [1:2:25];
 
 data = cell(length(N), 4);  % {1,2,3,4}: gazebo, mvsim,gazebo w GUI, mvsim w GUI
 
@@ -10,13 +10,13 @@ for i = 1:length(N)
     data{i, 1} = load(sprintf('benchmark_n_robots/cpu_gzserver_gui_%s_%02i.txt',hasGui,n)) + ...
                  load(sprintf('benchmark_n_robots/cpu_gzclient_gui_%s_%02i.txt',hasGui,n));
              
-    data{i, 2} = zeros(length(data{i,1}),1); % load(sprintf('benchmark_n_robots/cpu_mvsim_gui_%s_%02i.txt',hasGui,n));
+    data{i, 2} = load(sprintf('benchmark_n_robots/cpu_mvsim_gui_%s_%02i.txt',hasGui,n));
 
     hasGui='True';
     data{i, 3} = load(sprintf('benchmark_n_robots/cpu_gzserver_gui_%s_%02i.txt',hasGui,n)) + ...
                  load(sprintf('benchmark_n_robots/cpu_gzclient_gui_%s_%02i.txt',hasGui,n));
              
-    data{i, 4} = zeros(length(data{i,1}),1); %load(sprintf('benchmark_n_robots/cpu_mvsim_gui_%s_%02i.txt',hasGui,n));
+    data{i, 4} = load(sprintf('benchmark_n_robots/cpu_mvsim_gui_%s_%02i.txt',hasGui,n));
 end
 
 numSamples = length(data{1,1});
