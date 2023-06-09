@@ -14,13 +14,16 @@ def generate_launch_description():
     robot_description = pathlib.Path(os.path.join(package_dir, 'resource', 'robot.urdf')).read_text()
     use_sim_time = LaunchConfiguration('use_sim_time', default=True)
 
+    # Number of robots
+    num_robots = int(os.getenv('BENCHMARK_NUM_ROBOTS', 1))
+
     webots = WebotsLauncher(
-        world=os.path.join(package_dir, 'worlds', 'N25_world.wbt')
+        world=os.path.join(package_dir, 'worlds', 'N'+str(num_robots)+'_world.wbt')
     )
 
     robot_node_list = []
 
-    for i in range(25):
+    for i in range(num_robots):
         if i<10:
             robot_name = 'small_robot0'+str(i)
         else:
@@ -37,23 +40,6 @@ def generate_launch_description():
                                     ]
                                 )
         )
-
-    robot_state_publisher = Node(
-        package='robot_state_publisher',
-        executable='robot_state_publisher',
-        output='screen',
-        parameters=[{
-            'robot_description': '<robot name=""><link name=""/></robot>'
-        }],
-    )
-    rqt_node = Node(
-        package='rqt_gui',
-        executable='rqt_gui',
-        name='interface',
-        parameters=[
-            {'use_sim_time': use_sim_time},
-        ],
-    )
 
     cpu_measure = Node(
         package='measure_process_ros2_pkg',
@@ -76,7 +62,6 @@ def generate_launch_description():
 
     ld = LaunchDescription()
     ld.add_action(webots)
-    ld.add_action(rqt_node)
     ld.add_action(cpu_measure)
     for robot in robot_node_list:
         ld.add_action(robot)
