@@ -15,7 +15,7 @@
 	<variable name="ROBOTS_X_MIN" value="-10.0" />
 	<variable name="ROBOTS_Y_MIN" value="-10.0" />	
 
-	<variable name="NUM_BLOCKS" value="$env{BENCHMARK_NUM_ROBOTS}" />
+	<variable name="NUM_ROBOTS" value="$env{BENCHMARK_NUM_ROBOTS}" />
 
 	<!-- ========================
 		   Scenario definition
@@ -29,11 +29,11 @@
 	<!-- ========================
 		   Vehicle(s) definition
 	     ======================== -->
-	<for var="i" from="0" to="$f{NUM_BLOCKS}">
+	<for var="i" from="1" to="$f{NUM_ROBOTS}">
 		<!-- <block class="square_obstacle"> <init_pose>$f{unifrnd(ROBOTS_X_MIN,ROBOTS_X_MAX)} $f{unifrnd(ROBOTS_Y_MIN,ROBOTS_Y_MAX)} $f{unifrnd(-180,180)}</init_pose> </block> -->
 
         <vehicle class="small_robot">
-            <init_pose>$f{ROBOTS_X_MIN + (i % 8)*2.5} $f{ROBOTS_Y_MIN + (i/8)*2.5} 0</init_pose>  <!-- In global coords: x,y, yaw(deg) -->
+            <init_pose>$f{ROBOTS_X_MIN + (i % 8)*2.5} $f{ROBOTS_Y_MIN + floor(i/8)*2.5} 0</init_pose>  <!-- In global coords: x,y, yaw(deg) -->
             <init_vel>0 0 0</init_vel>  <!-- In local coords: vx,vy, omega(deg/s) -->
 
             <!-- Sensors -->
