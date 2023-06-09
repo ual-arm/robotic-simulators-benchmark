@@ -46,6 +46,14 @@ def generate_launch_description():
             'robot_description': '<robot name=""><link name=""/></robot>'
         }],
     )
+    rqt_node = Node(
+        package='rqt_gui',
+        executable='rqt_gui',
+        name='interface',
+        parameters=[
+            {'use_sim_time': use_sim_time},
+        ],
+    )
 
     cpu_measure = Node(
         package='measure_process_ros2_pkg',
@@ -68,6 +76,7 @@ def generate_launch_description():
 
     ld = LaunchDescription()
     ld.add_action(webots)
+    ld.add_action(rqt_node)
     ld.add_action(cpu_measure)
     for robot in robot_node_list:
         ld.add_action(robot)

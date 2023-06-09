@@ -17,13 +17,13 @@
             <ros>
                 <topicName>/camera</topicName>
                 <alwaysOn>false</alwaysOn>
-                <enabled>true</enabled>
+                <enabled>false</enabled>
             </ros>
         </device>
         <device reference="LDS-01" type="Lidar">
             <ros>
                 <enabled>true</enabled>
-                <updateRate>5</updateRate>
+                <updateRate>20</updateRate>
                 <topicName>/scan</topicName>
                 <alwaysOn>false</alwaysOn>
                 <frameName>LDS-01</frameName>

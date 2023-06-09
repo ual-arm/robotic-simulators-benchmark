@@ -5,6 +5,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/floors/protos/CircleArena.proto"
 
 WorldInfo {
+  basicTimeStep 1
 }
 Viewpoint {
   orientation -0.32809 -0.112961 0.937868 3.69592
@@ -153,7 +154,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -213,7 +218,7 @@ Robot {
   supervisor TRUE
   controller "<extern>"
   name "small_robot00"
-  translation 0.0 0.0 0.0
+  translation 0.0 0.0 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -356,7 +361,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -415,7 +424,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot01"
-  translation 1.5 0.0 0.0
+  translation 1.5 0.0 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -558,7 +567,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -617,7 +630,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot02"
-  translation 1.5 1.5 0.0
+  translation 1.5 1.5 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -760,7 +773,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -819,7 +836,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot03"
-  translation 0.0 1.5 0.0
+  translation 0.0 1.5 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -962,7 +979,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -1021,7 +1042,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot04"
-  translation -1.5 1.5 0.0
+  translation -1.5 1.5 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -1164,7 +1185,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -1223,7 +1248,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot05"
-  translation -1.5 0.0 0.0
+  translation -1.5 0.0 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -1366,7 +1391,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -1425,7 +1454,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot06"
-  translation -1.5 -1.5 0.0
+  translation -1.5 -1.5 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -1568,7 +1597,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -1627,7 +1660,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot07"
-  translation 0.0 -1.5 0.0
+  translation 0.0 -1.5 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -1770,7 +1803,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -1829,7 +1866,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot08"
-  translation 1.5 -1.5 0.0
+  translation 1.5 -1.5 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -1972,7 +2009,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -2031,7 +2072,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot09"
-  translation 3.0 0.0 0.0
+  translation 3.0 0.0 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -2174,7 +2215,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -2233,7 +2278,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot10"
-  translation 3.0 1.5 0.0
+  translation 3.0 1.5 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -2376,7 +2421,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -2435,7 +2484,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot11"
-  translation 3.0 3.0 0.0
+  translation 3.0 3.0 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -2578,7 +2627,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -2637,7 +2690,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot12"
-  translation 1.5 3.0 0.0
+  translation 1.5 3.0 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -2780,7 +2833,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -2839,7 +2896,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot13"
-  translation 0.0 3.0 0.0
+  translation 0.0 3.0 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -2982,7 +3039,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -3041,7 +3102,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot14"
-  translation -1.5 3.0 0.0
+  translation -1.5 3.0 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -3184,7 +3245,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -3243,7 +3308,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot15"
-  translation -3.0 3.0 0.0
+  translation -3.0 3.0 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -3386,7 +3451,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -3445,7 +3514,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot16"
-  translation -3.0 1.5 0.0
+  translation -3.0 1.5 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -3588,7 +3657,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -3647,7 +3720,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot17"
-  translation -3.0 0.0 0.0
+  translation -3.0 0.0 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -3790,7 +3863,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -3849,7 +3926,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot18"
-  translation -3.0 -1.5 0.0
+  translation -3.0 -1.5 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -3992,7 +4069,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -4051,7 +4132,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot19"
-  translation -3.0 -3.0 0.0
+  translation -3.0 -3.0 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -4194,7 +4275,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -4253,7 +4338,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot20"
-  translation -1.5 -3.0 0.0
+  translation -1.5 -3.0 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -4396,7 +4481,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -4455,7 +4544,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot21"
-  translation -0.0 -3.0 0.0
+  translation -0.0 -3.0 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -4598,7 +4687,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -4657,7 +4750,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot22"
-  translation 1.5 -3.0 0.0
+  translation 1.5 -3.0 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -4800,7 +4893,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -4859,7 +4956,7 @@ Robot {
   }
   controller "<extern>"
   name "small_robot23"
-  translation 3.0 -3.0 0.0
+  translation 3.0 -3.0 0.5
 	rotation 0 0 1 0.0
 }
 
@@ -5002,7 +5099,11 @@ Robot {
     }
     Lidar {
       name "LDS-01"
-      translation 0.5 0 0.28
+      translation 0.5 0 0.2
+      fieldOfView 6.2832
+      maxRange 5.0
+      minRange 1.0
+      horizontalResolution 200
     }
     DistanceSensor {
       translation 0.042 0.02 0.063
@@ -5061,6 +5162,6 @@ Robot {
   }
   controller "<extern>"
   name "small_robot24"
-  translation 3.0 -1.5 0.0
+  translation 3.0 -1.5 0.5
 	rotation 0 0 1 0.0
 }

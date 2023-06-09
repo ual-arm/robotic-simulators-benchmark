@@ -61,14 +61,14 @@ class RobotDriver:
         # Read Params
 
         #
-        self.__node.create_timer(0.2, self.publish_laserscan_data)
+        self.__node.create_timer(0.05, self.publish_laserscan_data)
 
     def publish_laserscan_data(self):
         ranges = self.__lidar.getLayerRangeImage(0)
         if ranges:
             self.msg_laser = LaserScan()
             self.msg_laser.header.stamp = Time(seconds=self.__robot.getTime()).to_msg()
-            self.msg_laser.header.frame_id = 'base_link'
+            self.msg_laser.header.frame_id = self.name_value+'/base_link'
             self.msg_laser.angle_min = -self.__lidar.getFov()/2.0
             self.msg_laser.angle_max = self.__lidar.getFov()/2.0
             self.msg_laser.angle_increment = self.__lidar.getFov()/self.__lidar.getHorizontalResolution()
@@ -85,12 +85,11 @@ class RobotDriver:
     def step(self):
         rclpy.spin_once(self.__node, timeout_sec=0)
         # self.__node.get_logger().info('Webots_Node::iterate() ok. %s' % (str(self.name_value)))
-
         q = tf_transformations.quaternion_from_euler(self.__imu.getRollPitchYaw()[0], self.__imu.getRollPitchYaw()[1], self.__imu.getRollPitchYaw()[2])
         t_base = TransformStamped()
         t_base.header.stamp = Time(seconds=self.__robot.getTime()).to_msg()
         t_base.header.frame_id = 'map'
-        t_base.child_frame_id = 'base_link'
+        t_base.child_frame_id = self.name_value+'/base_link'
         t_base.transform.translation.x = self.__gps.getValues()[0]
         t_base.transform.translation.y = self.__gps.getValues()[1]
         t_base.transform.translation.z = self.__gps.getValues()[2]
