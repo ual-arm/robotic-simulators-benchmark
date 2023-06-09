@@ -48,7 +48,7 @@ def generate_launch_description():
         output='screen',
         parameters=[{
              'process_name' : 'webots-bin, driver, ros2, rviz2',
-             'process_period' : 0.5},
+             'process_period' : 0.1},
         ],
     )
 
