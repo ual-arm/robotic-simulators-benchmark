@@ -92,7 +92,7 @@ def generate_launch_description():
         parameters=[{
              'output_file' : '/tmp/cpu_gzserver_gui_{}_{:02d}.txt'.format(show_gui, num_robots),
              'initial_delay' : 20,
-             'number_samples' : 30,
+             'number_samples' : 60,
              'topic_array_index' : 0  # Index within "process_name[]" of measure_process
              },
         ],
@@ -106,7 +106,7 @@ def generate_launch_description():
         parameters=[{
              'output_file' : '/tmp/cpu_gzclient_gui_{}_{:02d}.txt'.format(show_gui, num_robots),
              'initial_delay' : 20,
-             'number_samples' : 30,
+             'number_samples' : 60,
              'topic_array_index' : 3  # Index within "process_name[]" of measure_process
              },
         ],

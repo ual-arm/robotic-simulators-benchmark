@@ -55,8 +55,8 @@ def generate_launch_description():
         on_exit=launch.actions.Shutdown(),
         parameters=[{
              'output_file' : '/tmp/cpu_mvsim_gui_{}_{:02d}.txt'.format(show_gui, num_robots),
-             'initial_delay' : 6,
-             'number_samples' : 30,
+             'initial_delay' : 10,
+             'number_samples' : 60,
              'topic_array_index' : 0  # Index within "process_name[]" of measure_process
              },
         ],
