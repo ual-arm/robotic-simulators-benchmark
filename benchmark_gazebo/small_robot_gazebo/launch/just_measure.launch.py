@@ -18,7 +18,7 @@ def generate_launch_description():
         output='screen',
         on_exit=launch.actions.Shutdown(),
         parameters=[{
-             'process_name' : 'gzserver, gzclient, mvsim_node',
+             'process_name' : 'gzserver, gzclient, mvsim_node, webots-bin',
              'process_period' : 1.0},
         ],
     )
@@ -66,11 +66,27 @@ def generate_launch_description():
              },
         ],
     )
+
+    stats_recorder_webots = Node(
+        package='measure_process_ros2_pkg',
+        executable='record_cpu_usage',
+        name='stats_recorder_webots',
+        output='screen',
+        on_exit=launch.actions.Shutdown(),
+        parameters=[{
+             'output_file' : '/tmp/cpu_webots.txt',
+             'initial_delay' : 10,
+             'number_samples' : 60,
+             'topic_array_index' : 3  # Index within "process_name[]" of measure_process
+             },
+        ],
+    )
     
     ld = LaunchDescription()
     ld.add_action(cpu_measure)
     ld.add_action(stats_recorder_gzserver)
     ld.add_action(stats_recorder_gzclient)
     ld.add_action(stats_recorder_mvsim)
+    ld.add_action(stats_recorder_webots)
 
     return ld
