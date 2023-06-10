@@ -2,7 +2,7 @@ function []=plot_results_n_robots()
 
 N = [1:2:25];
 
-data = cell(length(N), 4);  % {1,2,3,4}: gazebo, mvsim,gazebo w GUI, mvsim w GUI
+data = cell(length(N), 4);  % {1,2,3,4, 5}: gazebo, mvsim,gazebo w GUI, mvsim w GUI, Webots (with GUI)
 
 for i = 1:length(N)
     n = N(i);
@@ -17,6 +17,8 @@ for i = 1:length(N)
                  load(sprintf('benchmark_n_robots/cpu_gzclient_gui_%s_%02i.txt',hasGui,n));
              
     data{i, 4} = load(sprintf('benchmark_n_robots/cpu_mvsim_gui_%s_%02i.txt',hasGui,n));
+
+    data{i, 5} = load(sprintf('benchmark_n_robots/cpu_webots_gui_False_%02i.txt',n));  % Note: GUI is actually "on" despite the name
 end
 
 numSamples = length(data{1,1});
@@ -30,7 +32,6 @@ afigure;
 hold on;
 
 sep=0.35; % separation between simulators points
-NUM_STDS = 1;
 ptSize = 6.0;
 
 for i = 1:length(N)
