@@ -25,13 +25,12 @@
                 <enabled>true</enabled>
                 <updateRate>20</updateRate>
                 <topicName>/scan</topicName>
-                <alwaysOn>false</alwaysOn>
+                <alwaysOn>true</alwaysOn>
                 <frameName>LDS-01</frameName>
             </ros>
         </device>
-        <frame_name>lidar_link</frame_name>
 
-<!--        <plugin type="webots_ros2_driver::Ros2IMU">
+        <plugin type="webots_ros2_driver::Ros2IMU">
             <enabled>true</enabled>
             <topicName>/imu</topicName>
             <alwaysOn>false</alwaysOn>
@@ -39,7 +38,7 @@
             <inertialUnitName>inertial unit</inertialUnitName>
             <gyroName>gyro</gyroName>
             <accelerometerName>accelerometer</accelerometerName>
-        </plugin> -->
+        </plugin>
         <plugin type="benchmark_webots.robot_driver.RobotDriver" />
     </webots>
 </robot>

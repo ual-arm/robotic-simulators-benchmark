@@ -38,9 +38,7 @@ def generate_launch_description():
                                     output='screen',
                                     additional_env={'WEBOTS_ROBOT_NAME': robot_name,
                                                     'WEBOTS_CONTROLLER_URL': controller_url_prefix() + robot_name},
-                                    parameters=[{   'robot_description': robot_description,
-                                                    'use_sim_time': use_sim_time,
-                                                    'set_robot_state_publisher': True},
+                                    parameters=[{   'robot_description': robot_description},
                                     ]
                                 )
         )
@@ -81,8 +79,8 @@ def generate_launch_description():
 
     ld = LaunchDescription()
     ld.add_action(webots)
-    ld.add_action(cpu_measure)
-    ld.add_action(stats_recorder_webots)
+    # ld.add_action(cpu_measure)
+    # ld.add_action(stats_recorder_webots)
     for robot in robot_node_list:
         ld.add_action(robot)
         

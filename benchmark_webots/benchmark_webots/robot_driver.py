@@ -37,8 +37,8 @@ class RobotDriver:
         # self.__gps.enable(timestep)
         # self.__gyro = self.__robot.getDevice("gyro")
         # self.__gyro.enable(timestep)
-        self.__lidar = self.__robot.getDevice("LDS-01")
-        self.__lidar.enable(timestep)
+        # self.__lidar = self.__robot.getDevice("LDS-01")
+        # self.__lidar.enable(timestep)
 
         ## Intialize Variables
         self.__target_twist = Twist()
@@ -50,9 +50,9 @@ class RobotDriver:
         # Subscription
         self.__node.create_subscription(Twist, '/cmd_vel', self.__cmd_vel_callback, 1)
         # Publisher
-        self.__laser_publisher = self.__node.create_publisher(LaserScan, self.name_value+'/scan', 10)
+        # self.__laser_publisher = self.__node.create_publisher(LaserScan, self.name_value+'/scan', 10)
 
-        self.tfbr = TransformBroadcaster(self.__node)
+        # self.tfbr = TransformBroadcaster(self.__node)
 
         self.initialize()
     
@@ -61,7 +61,7 @@ class RobotDriver:
         # Read Params
 
         #
-        self.__node.create_timer(0.05, self.publish_laserscan_data)
+        # self.__node.create_timer(0.05, self.publish_laserscan_data)
 
     def publish_laserscan_data(self):
         ranges = self.__lidar.getLayerRangeImage(0)
@@ -85,19 +85,19 @@ class RobotDriver:
     def step(self):
         rclpy.spin_once(self.__node, timeout_sec=0)
         # self.__node.get_logger().info('Webots_Node::iterate() ok. %s' % (str(self.name_value)))
-        q = tf_transformations.quaternion_from_euler(0,0,0) #self.__imu.getRollPitchYaw()[0], self.__imu.getRollPitchYaw()[1], self.__imu.getRollPitchYaw()[2])
-        t_base = TransformStamped()
-        t_base.header.stamp = Time(seconds=self.__robot.getTime()).to_msg()
-        t_base.header.frame_id = 'map'
-        t_base.child_frame_id = self.name_value+'/base_link'
-        t_base.transform.translation.x = 0.0 #self.__gps.getValues()[0]
-        t_base.transform.translation.y = 0.0 #self.__gps.getValues()[1]
-        t_base.transform.translation.z = 0.0 #self.__gps.getValues()[2]
-        t_base.transform.rotation.x = q[0]
-        t_base.transform.rotation.y = q[1]
-        t_base.transform.rotation.z = q[2]
-        t_base.transform.rotation.w = q[3]
-        self.tfbr.sendTransform(t_base)
+        # q = tf_transformations.quaternion_from_euler(self.__imu.getRollPitchYaw()[0], self.__imu.getRollPitchYaw()[1], self.__imu.getRollPitchYaw()[2])
+        # t_base = TransformStamped()
+        # t_base.header.stamp = Time(seconds=self.__robot.getTime()).to_msg()
+        # t_base.header.frame_id = 'map'
+        # t_base.child_frame_id = self.name_value+'/base_link'
+        # t_base.transform.translation.x = self.__gps.getValues()[0]
+        # t_base.transform.translation.y = self.__gps.getValues()[1]
+        # t_base.transform.translation.z = self.__gps.getValues()[2]
+        # t_base.transform.rotation.x = q[0]
+        # t_base.transform.rotation.y = q[1]
+        # t_base.transform.rotation.z = q[2]
+        # t_base.transform.rotation.w = q[3]
+        # self.tfbr.sendTransform(t_base)
 
         forward_speed = self.__target_twist.linear.x
         angular_speed = self.__target_twist.angular.z
