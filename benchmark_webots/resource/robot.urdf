@@ -17,7 +17,7 @@
             <ros>
                 <topicName>/camera</topicName>
                 <alwaysOn>false</alwaysOn>
-                <enabled>false</enabled>
+                <enabled>true</enabled>
             </ros>
         </device>
         <device reference="LDS-01" type="Lidar">

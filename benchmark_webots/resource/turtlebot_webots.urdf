@@ -4,7 +4,7 @@
         <device reference="LDS-01" type="Lidar">
             <ros>
                 <enabled>true</enabled>
-                <updateRate>5</updateRate>
+                <updateRate>10</updateRate>
                 <topicName>/scan</topicName>
                 <alwaysOn>false</alwaysOn>
                 <frameName>LDS-01</frameName>
@@ -21,6 +21,15 @@
             <gyroName>gyro</gyroName>
             <accelerometerName>accelerometer</accelerometerName>
         </plugin>
+
+        <device reference="cam" type="Camera">
+            <ros>
+                <topicName>/camera</topicName>
+                <updateRate>30</updateRate>
+                <alwaysOn>false</alwaysOn>
+                <enabled>true</enabled>
+            </ros>
+        </device>
 
         <plugin type="webots_ros2_control::Ros2Control" />
 

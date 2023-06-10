@@ -7,7 +7,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/devices/robotis/protos/RobotisLds01.proto"
 
 WorldInfo {
-  basicTimeStep 10
+  basicTimeStep 5
 }
 Viewpoint {
   orientation 0.3098242368454218 -0.45625581139643046 -0.8341699927653455 4.916683307659119
@@ -31,6 +31,13 @@ TurtleBot3Burger {
       name "imu_link"
     }
     GPS {
+    }
+    Camera {
+        name "cam"
+        translation 0.0 0 0.28
+        fieldOfView 0.87
+        width 1920
+        height 1080
     }
     InertialUnit {
       name "inertial_unit"
