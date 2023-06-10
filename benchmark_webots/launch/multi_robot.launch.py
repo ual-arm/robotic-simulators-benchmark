@@ -15,6 +15,7 @@ def generate_launch_description():
     package_dir = get_package_share_directory('benchmark_webots')
     robot_description = pathlib.Path(os.path.join(package_dir, 'resource', 'robot.urdf')).read_text()
     use_sim_time = LaunchConfiguration('use_sim_time', default=True)
+    ros2_supervisor = Ros2SupervisorLauncher()
 
     show_gui = str2bool(os.getenv('BENCHMARK_GUI', 'False'))
 
@@ -38,7 +39,8 @@ def generate_launch_description():
                                     output='screen',
                                     additional_env={'WEBOTS_ROBOT_NAME': robot_name,
                                                     'WEBOTS_CONTROLLER_URL': controller_url_prefix() + robot_name},
-                                    parameters=[{   'robot_description': robot_description},
+                                    parameters=[{   'robot_description': robot_description,
+                                                    'use_sim_time': use_sim_time},
                                     ]
                                 )
         )
@@ -79,6 +81,7 @@ def generate_launch_description():
 
     ld = LaunchDescription()
     ld.add_action(webots)
+    ld.add_action(ros2_supervisor)
     # ld.add_action(cpu_measure)
     # ld.add_action(stats_recorder_webots)
     for robot in robot_node_list:
