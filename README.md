@@ -54,6 +54,13 @@ ros2 launch xxx
 
 ## Run benchmark 2: turtlebot3 world
 
+### Conditions
+
+- 1 robot `turtlebot3_burger`
+- Physics: T=5 ms
+- Lidar: Sensor rate: 10 Hz. Published to ROS.
+- Camera: 1920x1080 @ 30 FPS
+
 ### Gazebo
 
 ```
