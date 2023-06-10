@@ -6,7 +6,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/floors/protos/Floor.proto"
 
 WorldInfo {
-  basicTimeStep 1
+  basicTimeStep 10
 }
 Viewpoint {
   orientation -0.32809 -0.112961 0.937868 3.69592

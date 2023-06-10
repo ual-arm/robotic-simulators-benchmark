@@ -9,7 +9,7 @@ WorldInfo {
   info [
 		 "Robotic simulators benchmark. Case N:1"
 	]
-  basicTimeStep 1
+  basicTimeStep 10
 }
 Viewpoint {
   orientation -0.32809 -0.112961 0.937868 3.69592

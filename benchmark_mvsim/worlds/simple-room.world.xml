@@ -1,6 +1,6 @@
 <mvsim_world version="1.0">
 	<!-- General simulation options -->
-	<simul_timestep>1e-3</simul_timestep> <!-- Simulation fixed-time interval for numerical integration [seconds] or 0 to autodetermine -->
+	<simul_timestep>10e-3</simul_timestep> <!-- Simulation fixed-time interval for numerical integration [seconds] or 0 to autodetermine -->
 
 	<!-- GUI options -->
 	<gui>
