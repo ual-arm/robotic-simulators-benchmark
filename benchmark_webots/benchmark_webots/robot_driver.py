@@ -31,12 +31,12 @@ class RobotDriver:
         
 
         ## Initialize Sensors
-        self.__imu = self.__robot.getDevice("inertial unit")
-        self.__imu.enable(timestep)
-        self.__gps = self.__robot.getDevice("gps")
-        self.__gps.enable(timestep)
-        self.__gyro = self.__robot.getDevice("gyro")
-        self.__gyro.enable(timestep)
+        # self.__imu = self.__robot.getDevice("inertial unit")
+        # self.__imu.enable(timestep)
+        # self.__gps = self.__robot.getDevice("gps")
+        # self.__gps.enable(timestep)
+        # self.__gyro = self.__robot.getDevice("gyro")
+        # self.__gyro.enable(timestep)
         self.__lidar = self.__robot.getDevice("LDS-01")
         self.__lidar.enable(timestep)
 
@@ -85,14 +85,14 @@ class RobotDriver:
     def step(self):
         rclpy.spin_once(self.__node, timeout_sec=0)
         # self.__node.get_logger().info('Webots_Node::iterate() ok. %s' % (str(self.name_value)))
-        q = tf_transformations.quaternion_from_euler(self.__imu.getRollPitchYaw()[0], self.__imu.getRollPitchYaw()[1], self.__imu.getRollPitchYaw()[2])
+        q = tf_transformations.quaternion_from_euler(0,0,0) #self.__imu.getRollPitchYaw()[0], self.__imu.getRollPitchYaw()[1], self.__imu.getRollPitchYaw()[2])
         t_base = TransformStamped()
         t_base.header.stamp = Time(seconds=self.__robot.getTime()).to_msg()
         t_base.header.frame_id = 'map'
         t_base.child_frame_id = self.name_value+'/base_link'
-        t_base.transform.translation.x = self.__gps.getValues()[0]
-        t_base.transform.translation.y = self.__gps.getValues()[1]
-        t_base.transform.translation.z = self.__gps.getValues()[2]
+        t_base.transform.translation.x = 0.0 #self.__gps.getValues()[0]
+        t_base.transform.translation.y = 0.0 #self.__gps.getValues()[1]
+        t_base.transform.translation.z = 0.0 #self.__gps.getValues()[2]
         t_base.transform.rotation.x = q[0]
         t_base.transform.rotation.y = q[1]
         t_base.transform.rotation.z = q[2]

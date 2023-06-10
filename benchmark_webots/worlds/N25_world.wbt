@@ -136,13 +136,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -343,13 +337,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -549,13 +537,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -755,13 +737,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -961,13 +937,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -1167,13 +1137,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -1373,13 +1337,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -1579,13 +1537,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -1785,13 +1737,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -1991,13 +1937,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -2197,13 +2137,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -2403,13 +2337,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -2609,13 +2537,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -2815,13 +2737,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -3021,13 +2937,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -3227,13 +3137,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -3433,13 +3337,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -3639,13 +3537,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -3845,13 +3737,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -4051,13 +3937,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -4257,13 +4137,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -4463,13 +4337,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -4669,13 +4537,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -4875,13 +4737,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
@@ -5081,13 +4937,7 @@ Robot {
         }
       ]
     }
-    Camera {
-        name "cam"
-        translation 0.5 0 0.28
-        fieldOfView 0.87
-        width 324
-        height 324
-    }
+    
     Gyro {
     }
     InertialUnit {
