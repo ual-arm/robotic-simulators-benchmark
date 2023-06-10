@@ -9,7 +9,6 @@ from launch.actions import DeclareLaunchArgument
 from launch.substitutions.path_join_substitution import PathJoinSubstitution
 from launch import LaunchDescription
 from webots_ros2_driver.webots_launcher import WebotsLauncher
-from webots_ros2_driver.wait_for_controller_connection import WaitForControllerConnection
 from webots_ros2_driver.utils import controller_url_prefix
 
 def str2bool(v):
