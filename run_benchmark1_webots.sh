@@ -5,7 +5,7 @@
 
 rm /tmp/cpu*
 
-for WITH_GUI in False True; do
+for WITH_GUI in True; do
     for N in {1..25..2}; do
     clear
     echo "========================================================"
@@ -13,6 +13,7 @@ for WITH_GUI in False True; do
     echo "========================================================"
 
     BENCHMARK_NUM_ROBOTS=$N ros2 launch benchmark_webots multi_robot.launch.py
+    sleep 2
     done
 done
 
