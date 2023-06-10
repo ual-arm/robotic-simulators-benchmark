@@ -43,6 +43,7 @@
               fov_degrees="360"
               sensor_period_sec="0.05"
               max_range="5.0"
+              sensor_custom_visual="false"
             />
         </vehicle>
 	</for>
