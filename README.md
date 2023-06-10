@@ -26,7 +26,7 @@ colcon build --symlink-install && source install/setup.bash
 ### Conditions
 
 - Many robots (N=1 to 25), simple empty square room.
-- Physics: T=1 ms
+- Physics: T=10 ms  (Limit here was Webots; Gazebo and MVSim can run at T=1 ms).
 - ROS Odom: 100 Hz
 - ROS publish joint_state: 30 Hz (not used here)
 - Lidar: 200 rays, 360 deg, range 1.0 to 5.0 m. Sensor rate: 20 Hz. Published to ROS.
