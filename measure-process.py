@@ -19,22 +19,21 @@ parser.add_argument("--period", type=float,
 
 args = parser.parse_args()
 
-val = 0
-
 
 def do_measure():
-    global val
     pi = psutil.process_iter()
-    lst = {}
+    val = 0.0
     for proc in pi:
         if not proc.name() in args.process:
             continue
 
         # We need to call this twice to get a first meaningful value
         val += proc.cpu_percent()
+        print(proc.name()+'=' + str(proc.cpu_percent()) + ' val=' + str(val) + ' ' + str(proc.cmdline()))
+    return val
 
 
 do_measure()
 time.sleep(args.period)
-do_measure()
+val = do_measure()
 print(val)

@@ -18,7 +18,7 @@ def generate_launch_description():
         output='screen',
         on_exit=launch.actions.Shutdown(),
         parameters=[{
-             'process_name' : 'gzserver, gzclient, mvsim_node, webots-bin',
+             'process_name' : 'gzserver, gzclient, mvsim_node, webots-bin, driver, python3@ros2_supervisor',
              'process_period' : 1.0},
         ],
     )
@@ -67,17 +67,45 @@ def generate_launch_description():
         ],
     )
 
-    stats_recorder_webots = Node(
+    stats_recorder_webots1 = Node(
         package='measure_process_ros2_pkg',
         executable='record_cpu_usage',
         name='stats_recorder_webots',
         output='screen',
         on_exit=launch.actions.Shutdown(),
         parameters=[{
-             'output_file' : '/tmp/cpu_webots.txt',
+             'output_file' : '/tmp/cpu_webots_bin.txt',
              'initial_delay' : 10,
              'number_samples' : 60,
              'topic_array_index' : 3  # Index within "process_name[]" of measure_process
+             },
+        ],
+    )
+    stats_recorder_webots2 = Node(
+        package='measure_process_ros2_pkg',
+        executable='record_cpu_usage',
+        name='stats_recorder_webots2',
+        output='screen',
+        on_exit=launch.actions.Shutdown(),
+        parameters=[{
+             'output_file' : '/tmp/cpu_webots_driver.txt',
+             'initial_delay' : 10,
+             'number_samples' : 60,
+             'topic_array_index' : 4  # Index within "process_name[]" of measure_process
+             },
+        ],
+    )
+    stats_recorder_webots1 = Node(
+        package='measure_process_ros2_pkg',
+        executable='record_cpu_usage',
+        name='stats_recorder_webots3',
+        output='screen',
+        on_exit=launch.actions.Shutdown(),
+        parameters=[{
+             'output_file' : '/tmp/cpu_webots_ros2.txt',
+             'initial_delay' : 10,
+             'number_samples' : 60,
+             'topic_array_index' : 5  # Index within "process_name[]" of measure_process
              },
         ],
     )
@@ -87,6 +115,8 @@ def generate_launch_description():
     ld.add_action(stats_recorder_gzserver)
     ld.add_action(stats_recorder_gzclient)
     ld.add_action(stats_recorder_mvsim)
-    ld.add_action(stats_recorder_webots)
+    ld.add_action(stats_recorder_webots1)
+    ld.add_action(stats_recorder_webots2)
+    ld.add_action(stats_recorder_webots3)
 
     return ld

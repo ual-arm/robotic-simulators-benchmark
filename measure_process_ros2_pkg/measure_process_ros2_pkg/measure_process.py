@@ -5,18 +5,24 @@ import psutil
 import numpy as np
 
 class Process():
-    def __init__(self, parent, id, topic):
+    def __init__(self, parent, id, topic, cmdline):
         self.id = id
+        self.cmdline_arg_match = cmdline
         self.value = 0.0
         self.node = parent
-        self.node.get_logger().warn('Init %s' % (self.id))
+        self.node.get_logger().warn('Init %s (cmdline args: "%s")' % (self.id, cmdline))
         self.pub_process_measure_ = self.node.create_publisher(Float64, topic.replace("-","_"), 10)
+
+
+def split_process_arg(name : str):
+    return name.split('@')
+
 
 class MeasureProcess(Node):
     def __init__(self):
         super().__init__('measure_process')
         # Params
-        self.declare_parameter('process_name', 'gzserver')
+        self.declare_parameter('process_name', 'python3@ros2')
         self.declare_parameter('process_period', 0.5)
 
         # Subscription
@@ -39,7 +45,15 @@ class MeasureProcess(Node):
         print(self.proc_list)
         self.process_list = list()
         for process in self.proc_list:
-            proc = Process(self, process, process+'_cpu')
+            lst = split_process_arg(process)
+            process = lst[0]
+            if len(lst) > 1: 
+                cmdline = lst[1]
+            else:
+                cmdline = ''
+                
+            print('process: ' + process + ' cmdline: ' + str(cmdline))
+            proc = Process(self, process, process+'_cpu', cmdline)
             self.process_list.append(proc)
         process_period = self.get_parameter('process_period').get_parameter_value().double_value
 
@@ -49,33 +63,22 @@ class MeasureProcess(Node):
         self.get_logger().info('Status: "%s"' % msg.data)
 
     def do_measure(self):
-        #data_list = list()
-        #cpu_count = psutil.cpu_count()
-        #data_list.append(float(cpu_count))
-        #data_list.append(psutil.cpu_percent(interval=None))
-        #mem = psutil.virtual_memory()
-        #data_list.append(mem.percent)
-        #load_tuple = psutil.getloadavg()
-        #for load in load_tuple:
-        #    percent = (load / cpu_count) * 100
-        #    data_list.append(percent)
-
-        #msg = Float64MultiArray()
-        #msg.data = data_list
-        #self.pub_cpu_measure_.publish(msg)
-        
         pi = psutil.process_iter()
         # print(psutil.cpu_percent(percpu=True))
 
         for proc in pi:
-            if not proc.name() in self.proc_list:
-                continue
-
             value =  proc.cpu_percent()
             for process in self.process_list:
-                if proc.name() == process.id:
+                if not proc.name().__contains__(process.id):
+                    continue
+                anyCli = False
+                for s in proc.cmdline():
+                    if process.cmdline_arg_match in s:
+                        anyCli = True
+
+                if (process.cmdline_arg_match == '') or (anyCli): # check optional cli argument filter
                     process.value += value
-        
+                        
         msg = Float64MultiArray()
         for process in self.process_list:
             msg.data.append(process.value)

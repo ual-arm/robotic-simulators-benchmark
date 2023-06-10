@@ -48,7 +48,7 @@ def get_ros2_nodes(*args):
             name='benchmark',
             output='screen',
             parameters=[{
-                'process_name' : 'webots-bin',
+                'process_name' : 'webots-bin, driver, python3@ros2_supervisor',
                 'process_period' : 1.0},
             ],
         )
@@ -61,10 +61,40 @@ def get_ros2_nodes(*args):
             output='screen',
             on_exit=launch.actions.Shutdown(),
             parameters=[{
-                'output_file' : '/tmp/cpu_webots_gui_{}_{:02d}.txt'.format(show_gui, num_robots),
+                'output_file' : '/tmp/cpu_webots_bin_{:02d}.txt'.format(num_robots),
                 'initial_delay' : 10,
                 'number_samples' : 60,
                 'topic_array_index' : 0  # Index within "process_name[]" of measure_process
+                },
+            ],
+        )
+    )
+    robot_node_list.append(Node(
+            package='measure_process_ros2_pkg',
+            executable='record_cpu_usage',
+            name='stats_recorder_webots',
+            output='screen',
+            on_exit=launch.actions.Shutdown(),
+            parameters=[{
+                'output_file' : '/tmp/cpu_webots_bin_{:02d}.txt'.format(num_robots),
+                'initial_delay' : 10,
+                'number_samples' : 60,
+                'topic_array_index' : 1  # Index within "process_name[]" of measure_process
+                },
+            ],
+        )
+    )
+    robot_node_list.append(Node(
+            package='measure_process_ros2_pkg',
+            executable='record_cpu_usage',
+            name='stats_recorder_webots',
+            output='screen',
+            on_exit=launch.actions.Shutdown(),
+            parameters=[{
+                'output_file' : '/tmp/cpu_webots_bin_{:02d}.txt'.format(num_robots),
+                'initial_delay' : 10,
+                'number_samples' : 60,
+                'topic_array_index' : 2  # Index within "process_name[]" of measure_process
                 },
             ],
         )
