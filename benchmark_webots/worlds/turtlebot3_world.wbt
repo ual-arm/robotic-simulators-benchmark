@@ -1,0 +1,292 @@
+#VRML_SIM R2023a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/robots/robotis/turtlebot/protos/TurtleBot3Burger.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/devices/robotis/protos/RobotisLds01.proto"
+
+WorldInfo {
+  basicTimeStep 10
+}
+Viewpoint {
+  orientation 0.3098242368454218 -0.45625581139643046 -0.8341699927653455 4.916683307659119
+  position -2.2033610968249544 -5.884703620812121 5.252154000708701
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+}
+TurtleBot3Burger {
+  translation -2.0 0 0
+  controller "<extern>"
+  controllerArgs [
+    ""
+  ]
+  extensionSlot [
+    Solid {
+      name "imu_link"
+    }
+    GPS {
+    }
+    InertialUnit {
+      name "inertial_unit"
+    }
+    RobotisLds01 {
+    }
+  ]
+}
+Solid {
+  translation -1.1 -1.1 0.25
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+        }
+      }
+      geometry Cylinder {
+        height 0.5
+        radius 0.15
+      }
+    }
+  ]
+  name "one_one"
+}
+Solid {
+  translation 0 -1.1 0.25
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+        }
+      }
+      geometry Cylinder {
+        height 0.5
+        radius 0.15
+      }
+    }
+  ]
+  name "two_one"
+}
+Solid {
+  translation 1.1 -1.1 0.25
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+        }
+      }
+      geometry Cylinder {
+        height 0.5
+        radius 0.15
+      }
+    }
+  ]
+  name "three_one"
+}
+Solid {
+  translation 1.1 1.1 0.25
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+        }
+      }
+      geometry Cylinder {
+        height 0.5
+        radius 0.15
+      }
+    }
+  ]
+  name "three_three"
+}
+Solid {
+  translation 1.1 0 0.25
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+        }
+      }
+      geometry Cylinder {
+        height 0.5
+        radius 0.15
+      }
+    }
+  ]
+  name "three_two"
+}
+Solid {
+  translation 0 0 0.25
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+        }
+      }
+      geometry Cylinder {
+        height 0.5
+        radius 0.15
+      }
+    }
+  ]
+  name "two_two"
+}
+Solid {
+  translation 0 1.1 0.25
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+        }
+      }
+      geometry Cylinder {
+        height 0.5
+        radius 0.15
+      }
+    }
+  ]
+  name "two_three"
+}
+Solid {
+  translation -1.1 0 0.25
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+        }
+      }
+      geometry Cylinder {
+        height 0.5
+        radius 0.15
+      }
+    }
+  ]
+  name "one_two"
+}
+Solid {
+  translation -1.1 1.1 0.25
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+        }
+      }
+      geometry Cylinder {
+        height 0.5
+        radius 0.15
+      }
+    }
+  ]
+  name "one_three"
+}
+Solid {
+  translation 3.5 0 1.7
+  rotation 1 0 0 1.5707996938995747
+  scale 0.8 0.8 0.8
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 1 0
+      }
+      geometry Mesh {
+        url [
+          "hexagon.dae"
+        ]
+      }
+    }
+  ]
+  name "head"
+}
+Solid {
+  translation 1.8 2.7 1.1
+  rotation 1 0 0 1.5707996938995747
+  scale 0.55 0.55 0.55
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 1 0
+      }
+      geometry Mesh {
+        url [
+          "hexagon.dae"
+        ]
+      }
+    }
+  ]
+  name "left_hand"
+}
+Solid {
+  translation -1.8 2.7 1.1
+  rotation 1 0 0 1.5707996938995747
+  scale 0.55 0.55 0.55
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 1 0
+      }
+      geometry Mesh {
+        url [
+          "hexagon.dae"
+        ]
+      }
+    }
+  ]
+  name "left_foot"
+}
+Solid {
+  translation 1.8 -2.7 1.1
+  rotation 1 0 0 1.5707996938995747
+  scale 0.55 0.55 0.55
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 1 0
+      }
+      geometry Mesh {
+        url [
+          "hexagon.dae"
+        ]
+      }
+    }
+  ]
+  name "right_hand"
+}
+Solid {
+  translation -1.8 -2.7 1.1
+  rotation 1 0 0 1.5707996938995747
+  scale 0.55 0.55 0.55
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 1 0
+      }
+      geometry Mesh {
+        url [
+          "hexagon.dae"
+        ]
+      }
+    }
+  ]
+  name "right_foot"
+}
+Solid {
+  translation 0 0 -0.3
+  rotation -0.5773509358554485 0.5773489358556708 -0.5773509358554485 2.0944
+  scale 0.25 0.25 0.25
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+      }
+      geometry Mesh {
+        url [
+          "wall.dae"
+        ]
+      }
+    }
+  ]
+  name "body"
+}
