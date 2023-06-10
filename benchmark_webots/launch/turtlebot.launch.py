@@ -27,38 +27,36 @@ import launch
 from ament_index_python.packages import get_package_share_directory, get_packages_with_prefixes
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.actions import IncludeLaunchDescription
-from webots_ros2_driver.webots_launcher import WebotsLauncher, Ros2SupervisorLauncher
+from webots_ros2_driver.webots_launcher import WebotsLauncher
+from webots_ros2_driver.wait_for_controller_connection import WaitForControllerConnection
 from webots_ros2_driver.utils import controller_url_prefix
 
-
 def get_ros2_nodes(*args):
-    package_dir = get_package_share_directory('webots_ros2_turtlebot')
     benchmark_pkg_dir = get_package_share_directory('benchmark_webots')
+    package_dir = get_package_share_directory('webots_ros2_turtlebot')
     robot_description = pathlib.Path(os.path.join(benchmark_pkg_dir, 'resource', 'turtlebot_webots.urdf')).read_text()
     ros2_control_params = os.path.join(package_dir, 'resource', 'ros2control.yml')
     use_sim_time = LaunchConfiguration('use_sim_time', default=True)
-
+    
     # TODO: Revert once the https://github.com/ros-controls/ros2_control/pull/444 PR gets into the release
+    # ROS control spawners
     controller_manager_timeout = ['--controller-manager-timeout', '50']
     controller_manager_prefix = 'python.exe' if os.name == 'nt' else ''
-
-    use_deprecated_spawner_py = 'ROS_DISTRO' in os.environ and os.environ['ROS_DISTRO'] == 'foxy'
-
     diffdrive_controller_spawner = Node(
         package='controller_manager',
-        executable='spawner' if not use_deprecated_spawner_py else 'spawner.py',
+        executable='spawner',
         output='screen',
         prefix=controller_manager_prefix,
         arguments=['diffdrive_controller'] + controller_manager_timeout,
     )
-
     joint_state_broadcaster_spawner = Node(
         package='controller_manager',
-        executable='spawner' if not use_deprecated_spawner_py else 'spawner.py',
+        executable='spawner',
         output='screen',
         prefix=controller_manager_prefix,
         arguments=['joint_state_broadcaster'] + controller_manager_timeout,
     )
+    ros_control_spawners = [diffdrive_controller_spawner, joint_state_broadcaster_spawner]
 
     mappings = [('/diffdrive_controller/cmd_vel_unstamped', '/cmd_vel')]
     if 'ROS_DISTRO' in os.environ and os.environ['ROS_DISTRO'] in ['humble', 'rolling']:
@@ -94,21 +92,26 @@ def get_ros2_nodes(*args):
         arguments=['0', '0', '0', '0', '0', '0', 'base_link', 'base_footprint'],
     )
 
+    # Wait for the simulation to be ready to start navigation nodes
+    waiting_nodes = WaitForControllerConnection(
+        target_driver=turtlebot_driver,
+        nodes_to_start= ros_control_spawners
+    )
+
     return [
-        joint_state_broadcaster_spawner,
-        diffdrive_controller_spawner,
         robot_state_publisher,
         turtlebot_driver,
-        footprint_publisher
+        footprint_publisher,
+        waiting_nodes,
     ]
 
 
 def generate_launch_description():
     benchmark_pkg_dir = get_package_share_directory('benchmark_webots')
+    world = LaunchConfiguration('world')
     mode = LaunchConfiguration('mode')
-
     webots = WebotsLauncher(
-        world=PathJoinSubstitution([benchmark_pkg_dir, 'worlds', 'turtlebot3_world.wbt']),
+        world=PathJoinSubstitution([benchmark_pkg_dir, 'worlds', world]),
         mode=mode,
         ros2_supervisor=True
     )
@@ -125,8 +128,8 @@ def generate_launch_description():
     return LaunchDescription([
         DeclareLaunchArgument(
             'world',
-            default_value='turtlebot3_burger_example.wbt',
-            description='Choose one of the world files from `/webots_ros2_turtlebot/world` directory'
+            default_value='turtlebot3_world.wbt',
+            description='Turtlebot3 World'
         ),
         DeclareLaunchArgument(
             'mode',
