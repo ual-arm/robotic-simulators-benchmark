@@ -95,7 +95,7 @@ def generate_launch_description():
              },
         ],
     )
-    stats_recorder_webots1 = Node(
+    stats_recorder_webots3 = Node(
         package='measure_process_ros2_pkg',
         executable='record_cpu_usage',
         name='stats_recorder_webots3',
