@@ -1,6 +1,6 @@
 function []=plot_results_n_robots_bars_decim()
 close all;
-N = [1:4:25];
+N = [1:2:23];
 
 data = cell(length(N), 5);
 
@@ -18,10 +18,10 @@ for i = 1:length(N)
              
     data{i, 4} = load(sprintf('benchmark_n_robots/cpu_mvsim_gui_%s_%02i.txt',hasGui,n));
 
-    data{i, 5} = load(sprintf('benchmark_n_robots/cpu_webots_gui_False_%02i.txt',n));  % Note: GUI is actually "on" despite the name
+    data{i, 5} = load(sprintf('benchmark_n_robots/cpu_webots_bin1_%02i.txt',n)) + ...
+                 load(sprintf('benchmark_n_robots/cpu_webots_bin2_%02i.txt',n)) + ...
+                 load(sprintf('benchmark_n_robots/cpu_webots_bin3_%02i.txt',n));
 end
-
-numSamples = length(data{1,1});
 
 % Calculate statistics for each set
 %means = cellfun(@mean, data);
@@ -62,10 +62,10 @@ hp(5).FaceColor='green';
 
 
 % Set figure properties
-%xlim([0.5, length(N) + 0.5]);
+xlim([-1, N(end) + 1]);
 xlabel('Number of robots');
 ylabel('CPU core usage [%]');
-ylim([0 200]);
+ylim([0 250]);
 
 xticks(N);
 %xticklabels({...});
@@ -80,9 +80,8 @@ for i = 1:length(N)
 
     for j=1:5
 
-        x0=n-1.8+0.6*j;
+        x0=n-0.9+0.3*j;
         plot_segment(x0, lowerBound(i,j),upperBound(i,j), 'k','-')
-        %plot(x0 * ones(numSamples, 1), data{i, 1},'b.', 'MarkerSize',ptSize);
     end
 end
 
@@ -98,7 +97,7 @@ end
 
 function []=plot_segment(x0,lowerBound,upperBound, col, lin)
 boxLnWidth=1;
-w=0.12; % box width
+w=0.05; % box width
 
 h1=line([x0-w, x0+w], [upperBound, upperBound], 'Color', col, 'LineStyle', lin, 'LineWidth', boxLnWidth);
 h2=line([x0, x0], [upperBound, lowerBound], 'Color', col, 'LineStyle', lin, 'LineWidth', boxLnWidth);
