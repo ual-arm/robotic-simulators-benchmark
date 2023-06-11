@@ -61,7 +61,7 @@ def get_ros2_nodes(*args):
             output='screen',
             on_exit=launch.actions.Shutdown(),
             parameters=[{
-                'output_file' : '/tmp/cpu_webots_bin_{:02d}.txt'.format(num_robots),
+                'output_file' : '/tmp/cpu_webots_bin1_{:02d}.txt'.format(num_robots),
                 'initial_delay' : 10,
                 'number_samples' : 60,
                 'topic_array_index' : 0  # Index within "process_name[]" of measure_process
@@ -76,7 +76,7 @@ def get_ros2_nodes(*args):
             output='screen',
             on_exit=launch.actions.Shutdown(),
             parameters=[{
-                'output_file' : '/tmp/cpu_webots_bin_{:02d}.txt'.format(num_robots),
+                'output_file' : '/tmp/cpu_webots_bin2_{:02d}.txt'.format(num_robots),
                 'initial_delay' : 10,
                 'number_samples' : 60,
                 'topic_array_index' : 1  # Index within "process_name[]" of measure_process
@@ -91,7 +91,7 @@ def get_ros2_nodes(*args):
             output='screen',
             on_exit=launch.actions.Shutdown(),
             parameters=[{
-                'output_file' : '/tmp/cpu_webots_bin_{:02d}.txt'.format(num_robots),
+                'output_file' : '/tmp/cpu_webots_bin3_{:02d}.txt'.format(num_robots),
                 'initial_delay' : 10,
                 'number_samples' : 60,
                 'topic_array_index' : 2  # Index within "process_name[]" of measure_process
