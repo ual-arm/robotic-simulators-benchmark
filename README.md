@@ -6,17 +6,18 @@ such that they are all simulated in different mobile robot simulators for CPU-us
 ## Requisites
 
 - Install: 
-  - gazebo
-  - Webots
+  - MVSim: `sudo apt-get install ros-$ROS_DISTRO-mvsim`
+  - Gazebo: `sudo apt-get install ros-$ROS_DISTRO-gazebo-ros`
   - Webots ROS2 pkg `sudo apt-get install ros-$ROS_DISTRO-webots-ros2`
 
 Python packages:
 
-    sudo pip install transformations    # or local to the user
-
+    sudo pip install transformations    # or local to the user, venv, etc.
 
 ## Build
-Para contruir el .urdf de los robots, editar el límite del "foreach" del fichero [CMakeList](https://github.com/FranciscoJManasAlvarez/paper-emcr2023/blob/f5d9632c52c9b0dbd2676620fd8f732cf919dfdf/experiments/mvsim_benchmark_gazebo/small_robot_description/CMakeLists.txt#L30) y luego el bucle for del [launch](https://github.com/FranciscoJManasAlvarez/paper-emcr2023/blob/f5d9632c52c9b0dbd2676620fd8f732cf919dfdf/experiments/mvsim_benchmark_gazebo/small_robot_gazebo/launch/multi_small_robot.launch.py#L23)
+
+Clone this repo in a ROS 2 workspace directory as usual, e.g. `~/ros2_ws/src/` then build with colcon:
+
 ```
 colcon build --symlink-install && source install/setup.bash
 ```
@@ -34,50 +35,37 @@ colcon build --symlink-install && source install/setup.bash
 
 ### Gazebo
 
-```
-BENCHMARK_GUI=False BENCHMARK_NUM_ROBOTS=10  ros2 launch small_robot_gazebo multi_small_robot.launch.py
-```
+Individual run test:
 
+    BENCHMARK_GUI=False BENCHMARK_NUM_ROBOTS=10  ros2 launch small_robot_gazebo multi_small_robot.launch.py
 
-### Webots
+Complete benchmark:
 
-```
-export BENCHMARK_NUM_ROBOTS=10
-ros2 launch benchmark_webots multi_robot.launch.py
-```
-
-### MVSim
-
-```
-ros2 launch xxx
-```
-
-## Run benchmark 2: turtlebot3 world
-
-### Conditions
-
-- 1 robot `turtlebot3_burger`
-- Physics: T=5 ms
-- Lidar: Sensor rate: 10 Hz. Published to ROS.
-- Camera: 1920x1080 @ 30 FPS
-
-### Gazebo
-
-```
-export TURTLEBOT3_MODEL=waffle
-ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
-```
+    run_benchmark1_gazebo.sh
 
 ### Webots
 
-```
-ros2 launch benchmark_webots turtlebot.launch.py
-```
+Individual run test:
+
+    BENCHMARK_NUM_ROBOTS=10 ros2 launch benchmark_webots multi_robot.launch.py
+
+(No option to disable the GUI for Webots)
+
+Complete benchmark:
+
+    run_benchmark1_webots.sh
 
 ### MVSim
 
-```
-ros2 launch  mvsim demo_turtlebot_world.launch.py
-```
+Individual run test:
+
+    BENCHMARK_GUI=False BENCHMARK_NUM_ROBOTS=10  ros2 launch small_robot_gazebo multi_small_robot.launch.py
+    
+Complete benchmark:
+
+    run_benchmark1_mvsim.sh
+
+## Details
+To rebuild the robots `.urdf`, edit the "foreach" in this [CMakeList](https://github.com/FranciscoJManasAlvarez/paper-emcr2023/blob/f5d9632c52c9b0dbd2676620fd8f732cf919dfdf/experiments/mvsim_benchmark_gazebo/small_robot_description/CMakeLists.txt#L30) and then the for loop in this [launch](https://github.com/FranciscoJManasAlvarez/paper-emcr2023/blob/f5d9632c52c9b0dbd2676620fd8f732cf919dfdf/experiments/mvsim_benchmark_gazebo/small_robot_gazebo/launch/multi_small_robot.launch.py#L23).
 
 
